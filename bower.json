@@ -5,11 +5,11 @@
   "authors": [
     "Eliut Islas"
   ],
-  "license": "GPL",
+  "license": "CC0-1.0",
   "keywords": [
     "Electron",
     "bitcoin-cli",
-    "GUI",
+    "GUI"
   ],
   "homepage": "https://github.com/eislasq/bitcoin-cli-GUI",
   "private": true,

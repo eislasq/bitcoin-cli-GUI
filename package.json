@@ -1,0 +1,23 @@
+{
+  "name": "bitcoin-cli GUI",
+  "version": "1.0.0",
+  "description": "A graphical user interface to use bitcoin-cli",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "bitcoin-cli",
+    "GUI"
+  ],
+  "author": "Eliut Islas",
+  "license": "GPL",
+  "devDependencies": {
+    "electron": "^8.2.5"
+  },
+  "dependencies": {
+    "jquery": "^3.5.0"
+  }
+}

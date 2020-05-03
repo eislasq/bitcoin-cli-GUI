@@ -1,0 +1,31 @@
+{
+  "name": "bitcoin-cli GUI",
+  "description": "A graphical user interface to use bitcoin-cli",
+  "main": "main.js",
+  "authors": [
+    "Eliut Islas"
+  ],
+  "license": "GPL",
+  "keywords": [
+    "Electron",
+    "bitcoin-cli",
+    "GUI",
+  ],
+  "homepage": "https://github.com/eislasq/bitcoin-cli-GUI",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-animate": "^1.7.9",
+    "angular-touch": "^1.7.9",
+    "angular-sanitize": "^1.7.9",
+    "angular": "^1.7.9",
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.5.0"
+  }
+}

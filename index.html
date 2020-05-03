@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script>window.$ = window.jQuery = require('jquery');</script>
+
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="ui-bootstrap-tpls-2.5.0.min.js"></script>
+
+    <script src="script.js"></script>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+  </head>
+  <body ng-app="btcli">
+    <script type="text/ng-template" id="customTemplate.html">
+  <a uib-tooltip="{{match.model.summary}}">
+    <!-- uib-tooltip-html="'{{match.model.summary|uibTypeaheadHighlight:query}}'|unsafe" -->
+      <span
+       ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+      <small class="text-muted" ng-bind-html="match.model.args | uibTypeaheadHighlight:query"></small>
+  </a>
+</script>
+    <div  ng-controller="gui">
+      <label>server:</label>
+      <input type="text" class="form-control" placeholder="http://127.0.0.1:8332/" ng-model="server" >
+      <label>Auth:</label>
+      <input type="text" class="form-control" placeholder="user:password" ng-model="auth" >
+      <label>Group:</label>
+      <select class="command-reference-filter" ng-model="filterGroup">
+        <option value="">All</option>
+        <option value="blockchain">Blockchain</option>
+        <option value="control">Control</option>
+        <option value="generating">Generating</option>
+        <option value="mining">Mining</option>
+        <option value="network">Network</option>
+        <option value="rawtransactions">Raw Transactions</option>
+        <option value="util">Utility</option>
+        <option value="wallet">Wallet</option>
+        <option value="zmq">Zmq</option>
+        <option value="deprecated">Deprecated</option>
+      </select>
+      <label>Command:</label>
+      <input type="text"
+      ng-model="command" 
+      placeholder="Command"
+      uib-typeahead="command as command.name for command in commands|filter:{group:filterGroup}|filter:$viewValue"
+      typeahead-min-length="0"
+      typeahead-template-url="customTemplate.html"
+      typeahead-loading="loadingLocations"
+      typeahead-no-results="noResults"
+      class="form-control">
+      <hr>
+      <h1>{{command.name}}</h1>
+      <h2 class="text-muted">{{command.args}}</h2>
+      <p>{{command.summary}}
+        <br/>
+        <a target="_blank" href="{{command.href}}">More info...</a>
+      </p>
+
+      <button ng-click="runCommand()">Run</button>
+      <h3>Last Result:</h3>
+      <pre>{{command.lastResult|json}}</pre>
+    </div>
+  </body>
+</html>
